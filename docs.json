@@ -1,0 +1,610 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "WSRS",
+        "version": "1.0.0",
+        "description": "API converted from Postman Collection"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "local"
+        }
+    ],
+    "paths": {
+        "/auth/generate-token": {
+            "get": {
+                "summary": "Generate Token",
+                "description": "",
+                "tags": [
+                    "auth"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-username",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "antrol_bpjs_rsumm"
+                        }
+                    },
+                    {
+                        "name": "x-password",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "rsumm@spa"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "metadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "number",
+                                                    "example": 200
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Ok"
+                                                }
+                                            }
+                                        },
+                                        "response": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "4|2FlCJS9xRrwTGDaFM9UCgwCxEIyHF1HRIv95yAxz59092e8d"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "invalid credential",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "metadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "number",
+                                                    "example": 401
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Invalid credentials"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/queues": {
+            "post": {
+                "summary": "Ambil antrean",
+                "description": "",
+                "tags": [
+                    "Antrean"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-username",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{username}}"
+                        }
+                    },
+                    {
+                        "name": "x-token",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{token}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response berhasil",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "metadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "number",
+                                                    "example": 200
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Ok"
+                                                }
+                                            }
+                                        },
+                                        "response": {
+                                            "type": "object",
+                                            "properties": {
+                                                "nomorantrean": {
+                                                    "type": "string",
+                                                    "example": "A-3"
+                                                },
+                                                "angkaantrean": {
+                                                    "type": "number",
+                                                    "example": 3
+                                                },
+                                                "kodebooking": {
+                                                    "type": "string",
+                                                    "example": "2025071715514582"
+                                                },
+                                                "norm": {
+                                                    "type": "string",
+                                                    "example": "1300006"
+                                                },
+                                                "namapoli": {
+                                                    "type": "string",
+                                                    "example": "Poliklinik Penyakit Dalam"
+                                                },
+                                                "namadokter": {
+                                                    "type": "string",
+                                                    "example": "dr. Gerry Permadi Sp.PD"
+                                                },
+                                                "estimasidilayani": {
+                                                    "type": "number",
+                                                    "example": 1752801120000
+                                                },
+                                                "sisakuotajkn": {
+                                                    "type": "number",
+                                                    "example": 17
+                                                },
+                                                "kuotajkn": {
+                                                    "type": "number",
+                                                    "example": 20
+                                                },
+                                                "sisakuotanonjkn": {
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "kuotanonjkn": {
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "keterangan": {
+                                                    "type": "string",
+                                                    "example": "Peserta harap datang 30 menit lebih awal guna pencatatan administrasi."
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "error pengambilan h-1",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "metadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "number",
+                                                    "example": 201
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Pengambilan antrean hanya dapat dilakukan 1 hari sebelum tanggal periksa"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nomorkartu": {
+                                        "type": "string",
+                                        "example": "0000100697927"
+                                    },
+                                    "nik": {
+                                        "type": "string",
+                                        "example": "3573052005590003"
+                                    },
+                                    "nohp": {
+                                        "type": "string",
+                                        "example": "087123667123"
+                                    },
+                                    "kodepoli": {
+                                        "type": "string",
+                                        "example": "INT"
+                                    },
+                                    "norm": {
+                                        "type": "string",
+                                        "example": "1300006"
+                                    },
+                                    "tanggalperiksa": {
+                                        "type": "string",
+                                        "example": "2025-07-18"
+                                    },
+                                    "kodedokter": {
+                                        "type": "number",
+                                        "example": 299094
+                                    },
+                                    "jampraktek": {
+                                        "type": "string",
+                                        "example": "08:00-21:00"
+                                    },
+                                    "jeniskunjungan": {
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "nomorreferensi": {
+                                        "type": "string",
+                                        "example": "0001R0040116A000003"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/queues/status": {
+            "post": {
+                "summary": "Status Antrean",
+                "description": "",
+                "tags": [
+                    "Antrean"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-username",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{username}}"
+                        }
+                    },
+                    {
+                        "name": "x-token",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{token}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response berhasil",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "metadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "number",
+                                                    "example": 200
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Ok"
+                                                }
+                                            }
+                                        },
+                                        "response": {
+                                            "type": "object",
+                                            "properties": {
+                                                "namapoli": {
+                                                    "type": "string",
+                                                    "example": "Poliklinik Penyakit Dalam"
+                                                },
+                                                "namadokter": {
+                                                    "type": "string",
+                                                    "example": "dr. Gerry Permadi Sp.PD"
+                                                },
+                                                "totalantrean": {
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "sisaantrean": {
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "antreanpanggil": {
+                                                    "type": "string",
+                                                    "example": "-"
+                                                },
+                                                "sisakuotajkn": {
+                                                    "type": "number",
+                                                    "example": 7
+                                                },
+                                                "kuotajkn": {
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "sisakuotanonjkn": {
+                                                    "type": "number",
+                                                    "example": 9
+                                                },
+                                                "kuotanonjkn": {
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "keterangan": {
+                                                    "type": "string",
+                                                    "example": "Mohon datang sebelum jam praktek mulai"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "dokter tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "metadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "number",
+                                                    "example": 201
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Dokter tidak ditemukan"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "kodepoli": {
+                                        "type": "string",
+                                        "example": "INT"
+                                    },
+                                    "tanggalperiksa": {
+                                        "type": "string",
+                                        "example": "2025-07-17"
+                                    },
+                                    "kodedokter": {
+                                        "type": "number",
+                                        "example": 299094
+                                    },
+                                    "jampraktek": {
+                                        "type": "string",
+                                        "example": "13:00-21:00"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/queues/remaining": {
+            "post": {
+                "summary": "New Request",
+                "description": "",
+                "tags": [
+                    "Antrean"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-username",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{username}}"
+                        }
+                    },
+                    {
+                        "name": "x-token",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{token}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "kodebooking": {
+                                        "type": "string",
+                                        "example": "2025071714531562"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/patients": {
+            "post": {
+                "summary": "Pasien Baru",
+                "description": "",
+                "tags": [
+                    "Patient"
+                ],
+                "parameters": [
+                    {
+                        "name": "x-username",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{username}}"
+                        }
+                    },
+                    {
+                        "name": "x-token",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "{{token}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nomorkartu": {
+                                        "type": "string",
+                                        "example": "0002281234195"
+                                    },
+                                    "nik": {
+                                        "type": "string",
+                                        "example": "3529072712840001"
+                                    },
+                                    "nohp": {
+                                        "type": "string",
+                                        "example": "085635228888"
+                                    },
+                                    "kodepoli": {
+                                        "type": "string",
+                                        "example": "BED"
+                                    },
+                                    "norm": {
+                                        "type": "string",
+                                        "example": "1300027"
+                                    },
+                                    "tanggalperiksa": {
+                                        "type": "string",
+                                        "example": "2025-05-22"
+                                    },
+                                    "kodedokter": {
+                                        "type": "number",
+                                        "example": 32366
+                                    },
+                                    "jampraktek": {
+                                        "type": "string",
+                                        "example": "08:00-11:00"
+                                    },
+                                    "jeniskunjungan": {
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "nomorreferensi": {
+                                        "type": "string",
+                                        "example": "0001R0040116A000001"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {},
+        "securitySchemes": {}
+    }
+}
