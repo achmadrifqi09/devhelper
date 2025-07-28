@@ -44,7 +44,7 @@ export default function GradientText({
                     ></div>
                 </div>
             )}
-            <div
+            <h1
                 className="inline-block relative z-2 text-transparent bg-cover animate-gradient"
                 style={{
                     ...gradientStyle,
@@ -54,7 +54,7 @@ export default function GradientText({
                 }}
             >
                 {children}
-            </div>
+            </h1>
         </div>
     );
 }
